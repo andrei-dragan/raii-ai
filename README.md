@@ -1,1 +1,1 @@
-# raii-ai
+# Innovative Product Design
