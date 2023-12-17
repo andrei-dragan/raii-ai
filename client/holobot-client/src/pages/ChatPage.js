@@ -21,8 +21,8 @@ const ChatPage = () => {
     setMessages((messages) => [...messages, { user: message, bot: "" }]);
     setLoading(true);
     try {
-      const response = await axios.post("https://loripsum.net/api/short", { message });
       await new Promise((resolve) => setTimeout(resolve, 3000));
+      const response = await axios.post("https://baconipsum.com/api/?type=all-meat&paras=3&start-with-lorem=1&format=html", { message });
       setLoading(false);
       if (response.status === 200) {
         setMessages((messages) => [...messages.slice(0, messages.length - 1), { user: message, bot: response.data.text }]);
