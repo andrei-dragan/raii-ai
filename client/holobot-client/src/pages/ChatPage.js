@@ -23,14 +23,13 @@ const ChatPage = () => {
     try {
       await new Promise((resolve) => setTimeout(resolve, 3000));
       const response = await axios.post(
-        "https://baconipsum.com/api/?type=all-meat&paras=3&start-with-lorem=1&format=html",
+        "https://api.api-ninjas.com/v1/loremipsum?paragraphs=1",
         { message },
         {
+          method: "GET",
           headers: {
+            "X-Api-Key": "98rsckxuwbCKncTzNM86Pw==pfD0fPQhs8TXs1wq",
             "Content-Type": "application/json",
-            "Access-Control-Allow-Origin": "*",
-            "Access-Control-Allow-Methods": "POST, GET, OPTIONS, PUT, DELETE",
-            "Access-Control-Allow-Headers": "Origin, X-Requested-With, Content-Type, Accept",
           },
         }
       );
