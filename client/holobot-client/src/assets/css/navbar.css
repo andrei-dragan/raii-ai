@@ -1,0 +1,94 @@
+#navbar {
+  height: 80px;
+  width: 100%;
+  background-color: #f2e3d2;
+  display: flex;
+  box-shadow: 0 8px 40px 0 rgba(0, 0, 0, 0.15);
+  display: flex;
+  z-index: 10;
+  position: fixed;
+  top: 0;
+}
+
+#navbar #back-button {
+  margin: 0 auto 0 40px;
+  display: flex;
+}
+
+#navbar #back-button:hover {
+  cursor: pointer;
+}
+
+#navbar #back-button:hover img {
+  transform: translateX(-4px);
+}
+
+#navbar #back-button img {
+  width: 20px;
+  margin: auto 0;
+}
+
+#navbar #back-button h1 {
+  font-size: 24px;
+  font-weight: bold;
+  letter-spacing: 4px;
+  margin: auto 0 auto 12px;
+  color: #333333;
+}
+
+@media (max-width: 500px) {
+  #navbar #back-button {
+    margin: 0 auto 0 20px;
+  }
+}
+
+@media (max-width: 400px) {
+  #navbar #back-button img {
+    width: 16px;
+  }
+
+  #navbar #back-button h1 {
+    font-size: 20px;
+  }
+}
+
+#navbar #logo {
+  display: flex;
+  margin: auto 40px auto auto;
+}
+
+#navbar #logo:hover {
+  cursor: pointer;
+}
+
+#navbar #logo h1 {
+  position: relative;
+  font-size: 32px;
+  line-height: 40px;
+  font-weight: bold;
+  letter-spacing: 2px;
+  color: #333333;
+}
+
+#navbar #logo #logo-header-with-background {
+  color: #f2e3d2 !important;
+  position: relative;
+  z-index: 1;
+}
+
+#navbar #logo #logo-header-with-background:after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: calc(100% - 2px);
+  height: 100%;
+  background-color: #333333;
+  z-index: -1;
+}
+
+@media (max-width: 500px) {
+  #navbar #logo {
+    margin: auto 20px auto auto;
+  }
+}

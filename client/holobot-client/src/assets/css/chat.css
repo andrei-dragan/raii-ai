@@ -1,0 +1,21 @@
+#chat {
+  margin-top: 80px;
+  padding: 40px 0;
+  min-height: calc(100vh - 160px);
+  background-color: #f2e3d2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+#chat-content {
+  position: relative;
+  width: 100%;
+  min-height: calc(100vh - 160px);
+  padding: 0 32px;
+  max-width: 800px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+}

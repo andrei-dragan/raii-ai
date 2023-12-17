@@ -1,0 +1,79 @@
+#modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+#modal #modal-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: 1001;
+  width: calc(100% - 32px);
+  max-width: 600px;
+  transform: translate(-50%, -50%);
+  background-color: #f2e3d2;
+  box-shadow: 0 8px 40px 0 rgba(0, 0, 0, 0.15);
+  border-radius: 16px;
+  overflow: hidden;
+  padding: 40px 32px;
+  box-shadow: 20px 20px 20px 0 rgba(0, 0, 0, 0.15);
+}
+
+#modal #modal-content h1 {
+  text-align: center;
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 64px;
+}
+
+#modal #modal-content #modal-buttons {
+  display: flex;
+  justify-content: center;
+  margin: 0 auto;
+}
+
+#modal #modal-content #modal-buttons .modal-action-button {
+  width: 140px;
+  padding: 8px 32px;
+  text-align: center;
+  font-weight: bold;
+  border-radius: 12px;
+  margin: 0 16px;
+  border: 4px solid #687dac;
+}
+#modal #modal-content #modal-buttons .modal-action-button:hover {
+  cursor: pointer;
+  transform: translateY(-5px);
+}
+
+#modal #modal-content #modal-buttons .modal-action-button h2 {
+  font-size: 24px;
+  line-height: 28px;
+}
+
+#modal #modal-content #modal-buttons #exit {
+  border: 4px solid #687dac;
+  color: #687dac;
+}
+
+#modal #modal-content #modal-buttons #stay {
+  background-color: #687dac;
+  color: #f2e3d2;
+}
+
+@media (max-width: 500px) {
+  #modal #modal-content h1 {
+    font-size: 20px;
+    margin-bottom: 40px;
+  }
+
+  #modal #modal-content #modal-buttons .modal-action-button h2 {
+    font-size: 20px;
+  }
+}

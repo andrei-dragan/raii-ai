@@ -1,0 +1,19 @@
+#transition-screen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: calc(100vh - 4px);
+  background-color: #f2e3d2;
+  z-index: 9999;
+  animation: fade-out 0.75s ease-in-out;
+}
+
+@keyframes fade-out {
+  0% {
+    width: calc(100vw - 4px);
+  }
+  100% {
+    width: 0vw;
+  }
+}
