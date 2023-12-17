@@ -21,7 +21,7 @@ const ChatPage = () => {
     setMessages((messages) => [...messages, { user: message, bot: "" }]);
     setLoading(true);
     try {
-      const response = await axios.post("http://loripsum.net/api/short", { message });
+      const response = await axios.post("https://loripsum.net/api/short", { message });
       await new Promise((resolve) => setTimeout(resolve, 3000));
       setLoading(false);
       if (response.status === 200) {
