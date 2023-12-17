@@ -24,6 +24,10 @@
   margin: 16px auto;
   border: 2px solid #687dac;
   border-radius: 8px;
+  background-color: #f2e3d2;
+
+  position: relative;
+  z-index: 2;
 }
 
 #chat-suggestions .chat-suggestion:hover {

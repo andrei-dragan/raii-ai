@@ -18,6 +18,8 @@ const Navbar = ({ needsModal }) => {
   const handleBackButton = () => {
     if (needsModal) {
       setShowModal(true);
+    } else {
+      navigator("/");
     }
   };
 

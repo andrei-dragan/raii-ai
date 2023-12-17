@@ -5,6 +5,9 @@ import axios from "axios";
 // css
 import "../assets/css/chat.css";
 
+// images
+import meditatingImage from "../assets/images/meditating.svg";
+
 // components
 import Navbar from "../components/Navbar";
 import TransitionScreen from "../components/TransitionScreen";
@@ -22,17 +25,13 @@ const ChatPage = () => {
     setLoading(true);
     try {
       await new Promise((resolve) => setTimeout(resolve, 3000));
-      const response = await axios.post(
-        "https://api.api-ninjas.com/v1/loremipsum?paragraphs=1",
-        { message },
-        {
-          method: "GET",
-          headers: {
-            "X-Api-Key": "98rsckxuwbCKncTzNM86Pw==pfD0fPQhs8TXs1wq",
-            "Content-Type": "application/json",
-          },
-        }
-      );
+      const response = await axios.post("https://our-endpoint.com", {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          "Accss-Control-Allow-Origin": "*",
+        },
+      });
       setLoading(false);
       if (response.status === 200) {
         setMessages((messages) => [...messages.slice(0, messages.length - 1), { user: message, bot: response.data.text }]);
@@ -53,6 +52,9 @@ const ChatPage = () => {
         <div id="chat-content">
           {messages.length === 0 ? <ChatSuggestions sendMessageToAPI={sendMessageToAPI} /> : <ChatConversation messages={messages} loading={loading} />}
           <ChatInput sendMessageToAPI={sendMessageToAPI} loading={loading} />
+        </div>
+        <div id="chat-image">
+          <img src={meditatingImage} alt="meditating" />
         </div>
       </div>
       <Footer />

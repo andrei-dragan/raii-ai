@@ -42,7 +42,7 @@ const LandingPage = () => {
                 By starting this conversation you acknowledge the <a href="https://dipubb.netlify.app/">Terms&Conditions</a> and fully agree with them!
               </p>
               <p>
-                Want to learn more about how we keep your data safe? <a href="https://dipubb.netlify.app/">Click here.</a>
+                Want to learn more about how we keep your data safe? <a href="/about">Click here.</a>
               </p>
             </div>
           </div>

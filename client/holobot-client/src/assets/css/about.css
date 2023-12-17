@@ -1,0 +1,142 @@
+#about {
+  position: relative;
+  width: 100%;
+  min-height: calc(100vh - 160px);
+  padding: 40px 32px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  margin-top: 80px;
+  background-color: #f2e3d2;
+}
+
+#about .paragraph {
+  display: flex;
+  justify-content: center;
+}
+
+#about .paragraph .supporting-text {
+  width: 40%;
+}
+
+#about .paragraph .header {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 64px 0;
+  align-items: center;
+}
+
+#about .paragraph .header h1 {
+  font-size: 80px;
+  line-height: 88px;
+  font-weight: bold;
+  letter-spacing: 4px;
+  margin: 4px 8px;
+  color: #333333;
+  text-align: left;
+  width: fit-content;
+}
+
+#about .paragraph .header .header-with-background {
+  color: #f2e3d2 !important;
+  position: relative;
+  z-index: 1;
+}
+
+#about .paragraph .header .header-with-background:after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: calc(100%);
+  height: 100%;
+  background-color: #333333;
+  z-index: -1;
+}
+
+#about .paragraph p {
+  text-align: left;
+  font-size: 20px;
+  line-height: 28px;
+  letter-spacing: 2px;
+  color: #333333;
+  font-weight: bold;
+  margin: 0 8px;
+  max-width: 800px;
+}
+
+#about .paragraph-image {
+  width: 60%;
+  max-width: 800px;
+  overflow: hidden;
+}
+
+#about .paragraph-image img {
+  width: 100%;
+}
+
+#about .paragraph-image-responsive {
+  display: none;
+}
+
+@media (max-width: 1200px) {
+  #about .paragraph-image {
+    display: none;
+  }
+
+  #about .paragraph {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  #about .paragraph .supporting-text {
+    width: 100%;
+  }
+
+  #about .paragraph .header {
+    justify-content: center;
+  }
+
+  #about .paragraph p {
+    margin: 8px auto;
+  }
+
+  #about .paragraph-image-responsive {
+    display: block;
+    width: calc(100% - 64px);
+    max-width: 800px;
+    margin: 16px auto 40px auto;
+  }
+
+  #about .paragraph-image-responsive img {
+    width: 100%;
+  }
+}
+
+@media (max-width: 600px) {
+  #about .paragraph .header {
+    margin: 32px 0;
+  }
+
+  #about .paragraph .header h1 {
+    font-size: 48px;
+    line-height: 56px;
+  }
+
+  #about .paragraph p {
+    font-size: 16px;
+    line-height: 24px;
+  }
+}
+
+@media (max-width: 400px) {
+  #about .paragraph .header-no-flex {
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+  }
+
+  #about .paragraph .header h1 {
+    text-align: center;
+  }
+}
