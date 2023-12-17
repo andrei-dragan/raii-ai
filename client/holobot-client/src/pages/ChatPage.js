@@ -22,7 +22,18 @@ const ChatPage = () => {
     setLoading(true);
     try {
       await new Promise((resolve) => setTimeout(resolve, 3000));
-      const response = await axios.post("https://baconipsum.com/api/?type=all-meat&paras=3&start-with-lorem=1&format=html", { message });
+      const response = await axios.post(
+        "https://baconipsum.com/api/?type=all-meat&paras=3&start-with-lorem=1&format=html",
+        { message },
+        {
+          headers: {
+            "Content-Type": "application/json",
+            "Access-Control-Allow-Origin": "*",
+            "Access-Control-Allow-Methods": "POST, GET, OPTIONS, PUT, DELETE",
+            "Access-Control-Allow-Headers": "Origin, X-Requested-With, Content-Type, Accept",
+          },
+        }
+      );
       setLoading(false);
       if (response.status === 200) {
         setMessages((messages) => [...messages.slice(0, messages.length - 1), { user: message, bot: response.data.text }]);
