@@ -39,10 +39,10 @@ const LandingPage = () => {
             </div>
             <div id="additional-info">
               <p>
-                By starting this conversation you acknowledge the <a href="https://dipubb.netlify.app/">Terms&Conditions</a> and fully agree with them!
+                By starting this conversation you acknowledge the <span onClick={() => navigate("/")}>Terms&Conditions</span> and fully agree with them!
               </p>
               <p>
-                Want to learn more about how we keep your data safe? <a href="/about">Click here.</a>
+                Want to learn more about how we keep your data safe? <span onClick={() => navigate("/about")}>Click here.</span>
               </p>
             </div>
           </div>
