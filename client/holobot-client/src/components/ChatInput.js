@@ -33,17 +33,19 @@ const ChatInput = ({ loading, sendMessageToAPI }) => {
   };
 
   return (
-    <div className={message === "" ? "reduced-opacity" : "no-opacity"} id="chat-input">
-      <textarea
-        rows={1}
-        ref={textAreaRef}
-        value={message}
-        onKeyPress={(event) => handleKeyPress(event)}
-        onChange={(event) => setMessage(event.target.value)}
-        placeholder="type your message..."
-      />
-      <img src={sendIcon} alt="send icon" onClick={() => sendMessage()} />
-    </div>
+    <>
+      <div className={message === "" ? "reduced-opacity" : "no-opacity"} id="chat-input">
+        <textarea
+          rows={1}
+          ref={textAreaRef}
+          value={message}
+          onKeyPress={(event) => handleKeyPress(event)}
+          onChange={(event) => setMessage(event.target.value)}
+          placeholder="type your message..."
+        />
+        <img src={sendIcon} alt="send icon" onClick={() => sendMessage()} />
+      </div>
+    </>
   );
 };
 

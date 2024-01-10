@@ -31,3 +31,18 @@
   width: 1000px;
   transform: translate(+10%, +10%);
 }
+
+#get-report-btn {
+  z-index: 99;
+  font-size: 16px;
+  font-weight: 600;
+  transition: all 0.2s ease-in-out;
+  opacity: 0.75;
+  width: fit-content;
+  margin: 40px auto 0 auto;
+}
+#get-report-btn:hover {
+  cursor: pointer;
+  opacity: 1;
+  text-decoration: underline;
+}

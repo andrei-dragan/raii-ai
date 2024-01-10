@@ -19,8 +19,43 @@ import ChatConversation from "../components/ChatConversation";
 const ChatPage = () => {
   const [messages, setMessages] = React.useState([]);
   const [loading, setLoading] = React.useState(false);
+  const [allowMessages, setAllowMessages] = React.useState(true);
 
   const sendMessageToAPI = async (message) => {
+    if (!allowMessages) return;
+
+    setMessages((messages) => [...messages, { user: message, bot: "" }]);
+    setLoading(true);
+    try {
+      await new Promise((resolve) => setTimeout(resolve, 3000));
+      const response = await axios.post("https://rrrusuraluca.pythonanywhere.com/mindful", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        data: {
+          input: message,
+        },
+      });
+      setLoading(false);
+      console.log(response);
+      if (response.status === 200) {
+        setMessages((messages) => [...messages.slice(0, messages.length - 1), { user: message, bot: response.data.text }]);
+      } else {
+        setMessages((messages) => [...messages.slice(0, messages.length - 1), { user: message, bot: "Sorry, I didn't understand that." }]);
+      }
+    } catch (error) {
+      setLoading(false);
+      setMessages((messages) => [...messages.slice(0, messages.length - 1), { user: message, bot: "Sorry, I didn't understand that." }]);
+    }
+  };
+
+  const getReport = async () => {
+    if (!allowMessages) return;
+
+    setAllowMessages(false);
+    const message = "Let's create a summarized report please!";
+
     setMessages((messages) => [...messages, { user: message, bot: "" }]);
     setLoading(true);
     try {
@@ -55,6 +90,9 @@ const ChatPage = () => {
         <div id="chat-content">
           {messages.length === 0 ? <ChatSuggestions sendMessageToAPI={sendMessageToAPI} /> : <ChatConversation messages={messages} loading={loading} />}
           <ChatInput sendMessageToAPI={sendMessageToAPI} loading={loading} />
+          <h3 id="get-report-btn" onClick={() => getReport()}>
+            get summarized report
+          </h3>
         </div>
         <div id="chat-image">
           <img src={meditatingImage} alt="meditating" />
