@@ -25,14 +25,17 @@ const ChatPage = () => {
     setLoading(true);
     try {
       await new Promise((resolve) => setTimeout(resolve, 3000));
-      const response = await axios.post("https://our-endpoint.com", {
-        method: "GET",
+      const response = await axios.post("https://rrrusuraluca.pythonanywhere.com/mindful", {
+        method: "POST",
         headers: {
           "Content-Type": "application/json",
-          "Accss-Control-Allow-Origin": "*",
+        },
+        data: {
+          input: message,
         },
       });
       setLoading(false);
+      console.log(response);
       if (response.status === 200) {
         setMessages((messages) => [...messages.slice(0, messages.length - 1), { user: message, bot: response.data.text }]);
       } else {
