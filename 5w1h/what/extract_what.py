@@ -19,7 +19,7 @@ def extract_significant_phrases(doc):
     phrases = []
     for chunk in doc.noun_chunks:
         # Filter out short phrases and common words
-        if len(chunk) > 2 and not all(token.is_stop for token in chunk):
+        if len(chunk) > 1 and not all(token.is_stop for token in chunk):
             phrases.append(chunk.text.lower())
     return phrases
 
@@ -33,7 +33,7 @@ def perform_topic_modeling(phrases):
     Returns:
     str: The most relevant phrase.
     """
-    vectorizer = TfidfVectorizer(max_df=0.85, min_df=1, stop_words='english', ngram_range=(1, 3))
+    vectorizer = TfidfVectorizer(min_df=0.01, max_df=0.75, stop_words='english', ngram_range=(1, 3))
     X = vectorizer.fit_transform(phrases)
 
     # Use NMF to find the dominant topic

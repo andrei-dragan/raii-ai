@@ -119,4 +119,4 @@ def preprocess_data(file_path):
 
 
 # Usage example (uncomment to run)
-preprocessed_df = preprocess_data('/Users/groza/Documents/mindful/5w1h-extraction/dataset/dataset.csv')
+preprocessed_df = preprocess_data('dataset.csv')

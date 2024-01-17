@@ -153,4 +153,4 @@ def extract_most_relevant_location(text, who, what):
         # Return the location with the highest relevance score
         return max(location_scores, key=location_scores.get)
     else:
-        return None
+        return 'No location'

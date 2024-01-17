@@ -68,6 +68,8 @@ def extract_reason_from_dialogue(doc):
                     reason = analyze_sentence_structure(sent)
                     if reason:
                         reasons.append(reason)
+    if len(reasons) == 0:
+        return 'No reason provided'
     return max(reasons, key=lambda x: len(x.split()), default=None)  # Select the longest reason
 
 def get_reason_score(reason, doc):

@@ -253,6 +253,9 @@ def extract_most_relevant_time(text, session_start_str, who, what):
     # Combine and find unique time references
     all_times = list(set(absolute_times + relative_times))
 
+    if not all_times:  # Check if all_times is empty
+        return 'Since last session'  # or a default value, depending on your application's needs
+
     # Analyze the context of each time reference
     context_scores = analyze_context(text, all_times, who, what)
 
