@@ -33,7 +33,6 @@ const ChatPage = () => {
       messages.forEach((message) => {
         conversation += "User:" + message.user + " Bot:" + message.bot;
       });
-      console.log(conversation);
 
       await new Promise((resolve) => setTimeout(resolve, 1000));
       const response = await axios.post("https://rrrusuraluca.pythonanywhere.com/mindful", {
