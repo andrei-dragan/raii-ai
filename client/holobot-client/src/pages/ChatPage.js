@@ -73,8 +73,8 @@ const ChatPage = () => {
         conversation += "User:" + message.user + " Bot:" + message.bot;
       });
 
-      await new Promise((resolve) => setTimeout(resolve, 1000));
-      const response = await axios.post("https://rrrusuraluca.pythonanywhere.com/mindful", {
+      await new Promise((resolve) => setTimeout(resolve, 5000));
+      const response = await axios.post("https://rrrusuraluca.pythonanywhere.com/summary", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -85,8 +85,19 @@ const ChatPage = () => {
         },
       });
       setLoading(false);
+
+      const splitMessage = response.data.response.split("\n");
+      const messagesHTML = splitMessage.map((line, index) => <p key={index} dangerouslySetInnerHTML={{ __html: line }} />);
+      const messagesWithBreaks = messagesHTML.reduce((result, element, index, array) => {
+        result.push(element);
+        if (index < array.length - 1) {
+          result.push(<br key={`br-${index}`} />);
+        }
+        return result;
+      }, []);
+
       if (response.status === 200) {
-        setMessages((messages) => [...messages.slice(0, messages.length - 1), { user: message, bot: response.data.response }]);
+        setMessages((messages) => [...messages.slice(0, messages.length - 1), { user: message, bot: messagesWithBreaks }]);
       } else {
         setMessages((messages) => [...messages.slice(0, messages.length - 1), { user: message, bot: "Sorry, I didn't understand that." }]);
       }
