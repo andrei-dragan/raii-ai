@@ -1,6 +1,5 @@
 // utils
 import React from "react";
-import { useEffect } from "react";
 
 // css
 import "../assets/css/chat-suggestions.css";

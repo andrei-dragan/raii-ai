@@ -1,6 +1,7 @@
 // utils
 import React from "react";
 import axios from "axios";
+import { format } from "date-fns";
 
 // css
 import "../assets/css/chat.css";
@@ -20,6 +21,7 @@ const ChatPage = () => {
   const [messages, setMessages] = React.useState([]);
   const [loading, setLoading] = React.useState(false);
   const [allowMessages, setAllowMessages] = React.useState(true);
+  const [firstMessageTimestamp, setFirstMessageTimestamp] = React.useState(null);
 
   const sendMessageToAPI = async (message) => {
     if (!allowMessages) return;
@@ -27,7 +29,13 @@ const ChatPage = () => {
     setMessages((messages) => [...messages, { user: message, bot: "" }]);
     setLoading(true);
     try {
-      await new Promise((resolve) => setTimeout(resolve, 3000));
+      let conversation = "";
+      messages.forEach((message) => {
+        conversation += "User:" + message.user + " Bot:" + message.bot;
+      });
+      console.log(conversation);
+
+      await new Promise((resolve) => setTimeout(resolve, 1000));
       const response = await axios.post("https://rrrusuraluca.pythonanywhere.com/mindful", {
         method: "POST",
         headers: {
@@ -35,12 +43,14 @@ const ChatPage = () => {
         },
         data: {
           input: message,
+          conversation: conversation,
         },
       });
+      setFirstMessageTimestamp(format(new Date().getTime(), "yyyy-MM-dd HH:mm:ss"));
+
       setLoading(false);
-      console.log(response);
       if (response.status === 200) {
-        setMessages((messages) => [...messages.slice(0, messages.length - 1), { user: message, bot: response.data.text }]);
+        setMessages((messages) => [...messages.slice(0, messages.length - 1), { user: message, bot: response.data.response }]);
       } else {
         setMessages((messages) => [...messages.slice(0, messages.length - 1), { user: message, bot: "Sorry, I didn't understand that." }]);
       }
@@ -59,20 +69,25 @@ const ChatPage = () => {
     setMessages((messages) => [...messages, { user: message, bot: "" }]);
     setLoading(true);
     try {
-      await new Promise((resolve) => setTimeout(resolve, 3000));
+      let conversation = "";
+      messages.forEach((message) => {
+        conversation += "User:" + message.user + " Bot:" + message.bot;
+      });
+
+      await new Promise((resolve) => setTimeout(resolve, 1000));
       const response = await axios.post("https://rrrusuraluca.pythonanywhere.com/mindful", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
         data: {
-          input: message,
+          session_start: firstMessageTimestamp,
+          conversation: conversation,
         },
       });
       setLoading(false);
-      console.log(response);
       if (response.status === 200) {
-        setMessages((messages) => [...messages.slice(0, messages.length - 1), { user: message, bot: response.data.text }]);
+        setMessages((messages) => [...messages.slice(0, messages.length - 1), { user: message, bot: response.data.response }]);
       } else {
         setMessages((messages) => [...messages.slice(0, messages.length - 1), { user: message, bot: "Sorry, I didn't understand that." }]);
       }
