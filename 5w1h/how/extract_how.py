@@ -57,5 +57,5 @@ def extract_relevant_how_phrase(text):
     combined_scores = {phrase: phrase_counter.get(phrase, 0) for phrase in relevant_phrases}
     most_relevant_phrase = max(combined_scores, key=combined_scores.get, default=None)
 
-    return relevant_phrases[0]
+    return most_relevant_phrase
 

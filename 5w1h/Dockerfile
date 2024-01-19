@@ -2,7 +2,7 @@ FROM python:3.9
 
 WORKDIR /app
 
-ENV PORT 8080
+ENV HTTP_PORT 8080
 ENV HOST 0.0.0.0
 
 COPY . /app
